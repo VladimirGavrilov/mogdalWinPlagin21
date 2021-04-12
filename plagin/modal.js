@@ -37,7 +37,7 @@ $.modal = function (options) {
             $modal.classList.add('open')
         },
         close(){
-            $modal.classList.remove('open')
+            $modal.classList.remove('close')
         },
         destroy(){}
      }    
