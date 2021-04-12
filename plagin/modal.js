@@ -53,7 +53,7 @@ $.modal = function (options) {
 
     $modal.addEventListener('click', event => {        
         // console.log( 'Clict', event.target.dataset.close )
-        if (event.target.dataset.close == trues) {
+        if (event.target.dataset.close == true) {
             modal.close()
             
         }        
