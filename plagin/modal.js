@@ -4,13 +4,13 @@ function _createModal(options) {
     modal.classList.add('vmodal');
     modal.insertAdjacentHTML('afterBegin',
         ` 
-        <div class="modal-overlay" data-close = "1">
+        <div class="modal-overlay" data-close = 'true'>
         <div class="modal-window" style="width: ${options.width || DEFAULT_WIDTH };">
                 <div class="modal-header">
                     <span class="modal-title">
                         ${options.title || 'Window'}
                     </span>
-                    ${options.closable ?`<span class="modal-close" data-close = "1">&times;</span>`:''}
+                    ${options.closable ?`<span class="modal-close" data-close = 'true'>&times;</span>`:''}
                 </div>
                 <div class="modal-body">
                     ${options.content || ""}
@@ -53,7 +53,7 @@ $.modal = function (options) {
 
     $modal.addEventListener('click', event => {        
         // console.log( 'Clict', event.target.dataset.close )
-        if (event.target.dataset.close == true) {
+        if (event.target.dataset.close == 'true') {
             modal.close()
             
         }        
