@@ -1,1 +1,1 @@
-// const mayModal = $.modal()
+const mayModal = $.modal();

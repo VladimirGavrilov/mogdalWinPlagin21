@@ -30,7 +30,7 @@ function _createModal(options) {
 
 $.modal = function (options) {
     // знак  $ показывает что в переменной node элемент 
-    const $modal = _createModal(options)
+    const $modal = _createModal(options);
 
     return {
         open(){},
