@@ -5,7 +5,26 @@ const modal = $.modal({
         <p>Контент модального окна!</p>
     
     `,
-    width: '300px'
+    width: '300px',
+    footerButtons: [
+        {
+            text: 'Ok',
+            type: 'primary',
+            handler(){
+                console.log('Primary btn clicked')
+            }
+        },
+        {
+            text: 'Cansel',
+            type: 'danger',
+            handler(){
+                console.log('Danger btn clicked')
+            }
+        },
+
+
+    ]
+
 
 }
 );
