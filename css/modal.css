@@ -1,7 +1,18 @@
-.modal-window .modal-overlay{
-    opacity: 0;
-    z-index: -10;
+.vmodal{
+
 }
+
+.vmodal.open .modal-overlay,
+.vmodal.open .modal-window{
+    opacity: 1;
+    z-index: 100; 
+    
+}
+.modal-overlay, .modal-window {
+    opacity: 0;
+    z-index: -1; 
+}
+
 .modal-overlay{
     position: fixed;
     top: 0;
@@ -16,6 +27,7 @@
     border-radius: 10px;
     margin : 100px auto; 
 }
+
 
 .modal-header{
     padding: 5px 10px;
