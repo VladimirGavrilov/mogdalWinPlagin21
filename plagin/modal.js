@@ -1,6 +1,9 @@
+
 function _createModal(options) {
     const DEFAULT_WIDTH = '600px';
     const modal = document.createElement('div');
+    
+
     modal.classList.add('vmodal');
     modal.insertAdjacentHTML('afterBegin',
         ` 
@@ -32,9 +35,13 @@ $.modal = function (options) {
     // знак  $ показывает что в переменной node элемент 
     const $modal = _createModal(options);
     const ANIMATION_SPEED = 1500;
+    let destroyed = false;
     let closing = false;
     const modal = {
-        open(){            
+        open(){
+            if (destroyed) {
+                return console.lod('Modal is destroy')                
+            }            
             !closing && $modal.classList.add('open')            
         },
         close(){
@@ -50,13 +57,23 @@ $.modal = function (options) {
         },
 
     }
-
-    $modal.addEventListener('click', event => {        
-        // console.log( 'Clict', event.target.dataset.close )
-        if (event.target.dataset.close == 'true') {
+    const listiner = event =>{
+         // console.log( 'Clict', event.target.dataset.close )
+        if (event.target.dataset.close) {
             modal.close()
             
-        }        
-    }) ;
-    return modal
+        }  
+    }
+
+    $modal.addEventListener('click', listiner) ;
+    return Object.assign(modal, {
+        destroy(){
+            $modal.parentNode.removeChild($modal);//удаляем элемент из элемента!
+            $modal.removeEventListener;
+            destroyed = true;
+
+
+        }
+
+    }) 
 }
