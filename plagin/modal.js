@@ -2,25 +2,24 @@ function _createModal(options) {
     const modal = document.createElement('div');
     modal.classList.add('vmodal');
     modal.insertAdjacentHTML('afterBegin',
-    ` 
-    <div class="modal-overlay">
-       <div class="modal-window">
-            <div class="modal-header">
-                <span class="modal-title"> Modal title </span>
-                <span class="modal-close">&times;</span>
+        ` 
+        <div class="modal-overlay">
+        <div class="modal-window">
+                <div class="modal-header">
+                    <span class="modal-title"> Modal title </span>
+                    <span class="modal-close">&times;</span>
+                </div>
+                <div class="modal-body">
+                    <p>Lorem ipsum dolor sit amet.</p>
+                    <p>Lorem ipsum dolor sit amet.</p>
+                </div>
+                <div class="modal-footer">
+                    <button>Ok</button>
+                    <button>Cancel</button>
+                </div>
             </div>
-            <div class="modal-body">
-                <p>Lorem ipsum dolor sit amet.</p>
-                <p>Lorem ipsum dolor sit amet.</p>
-            </div>
-            <div class="modal-footer">
-                <button>Ok</button>
-                <button>Cancel</button>
-            </div>
-        </div>
-    </div>
-     
-    `
+        </div>     
+        `
     );
     //insertAdjacentHTML end
     document.body.appendChild(modal);
@@ -31,13 +30,22 @@ function _createModal(options) {
 $.modal = function (options) {
     // знак  $ показывает что в переменной node элемент 
     const $modal = _createModal(options);
+    const ANIMATION_SPEED = 1500;
+    let closing = false;
 
     return {
-        open(){
-            $modal.classList.add('open')
+        open(){            
+            !closing && $modal.classList.add('open')            
         },
         close(){
+            closing = true
             $modal.classList.remove('open')
+            $modal.classList.add('hide')
+            setTimeout(() => {
+                 $modal.classList.remove('hide')
+                closing = false;
+                }, ANIMATION_SPEED)
+            closing = false;
         },
         destroy(){}
      }    
