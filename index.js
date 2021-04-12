@@ -1,12 +1,11 @@
 const modal = $.modal({
-    title: 'Name Title',
-    closable: 'false',
+    title: 'Титул окна!',
+    closable: true,
     content: `
-    <h3>Modal is work</h3>
-    <p>Контент модального окна!</p>
+        <p>Контент модального окна!</p>
     
     `,
-    width: '500px'
+    width: '300px'
 
 }
 );
