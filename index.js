@@ -23,14 +23,15 @@ const deserts = [
 ]
 const toHTML = (desert) => 
     `<div class="col">
-            <div class="card">
-                <img src="${desert.image}"
-                    class="card-img-top" style="height: 300px; " alt="${ desert.title }">
-                <div class="card-body">
-                    <h5 class="card-title">${ desert.title }</h5>
-                    <p class="card-text">${ desert.text}</p>
-                    <a href="#" class="btn btn-primary" data-btn = "price">Посмотреть цену</a>
-                    <a href="#" class="btn btn-danger">Удалить</a>
+        <div class="card">
+            <img src="${desert.image}"
+                        class="card-img-top" style="height: 300px; " alt="${ desert.title }">
+            <div class="card-body">
+                <h5 class="card-title">${ desert.title }</h5>
+                <p class="card-text">${ desert.text}</p>
+                <a href="#" class="btn btn-primary" data-btn = "price">Посмотреть цену</a>
+                <a href="#" class="btn btn-danger">Удалить</a>
+            </div>
         </div>
     </div>`
 
