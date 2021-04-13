@@ -29,7 +29,7 @@ const toHTML = (desert) =>
             <div class="card-body">
                 <h5 class="card-title">${ desert.title }</h5>
                 <p class="card-text">${ desert.text}</p>
-                <a href="#" class="btn btn-primary" data-btn = "price">Посмотреть цену</a>
+                <a href="#" class="btn btn-primary" data-btn = "price" data-id='${ desert.id}'>Посмотреть цену</a>
                 <a href="#" class="btn btn-danger">Удалить</a>
             </div>
         </div>
@@ -41,6 +41,26 @@ function render() {
     document.getElementById('desert').innerHTML = html
 }
 render()
+////////////////
+const modalPrece = $.modal({
+    title: 'Цена на товар!',
+    closable: true,
+    width: '300px',
+    //параметру кнопок
+    footerButtons: [
+        {
+            text: 'закрыть',
+            type: 'primary',
+            handler() {
+                modalPrece.close()
+            }
+        },
+    ]
+
+
+}
+);
+/////////////
 const modal = $.modal({
     title: 'Титул окна!',
     closable: true,
@@ -71,13 +91,15 @@ const modal = $.modal({
 
 
 }
-);
+);/*- end create modal window-*/
 document.addEventListener('click', event => {
     event.preventDefault(false)
     const btnType = event.target.dataset.btn
+    const id = event.target.dataset.id
+    const desert = deserts.
     // console.log( 'Clict', event.target.dataset.close )
     if (btnType === 'price') {
-        modal.open()
+        modalPrece.open()
 
     }
 })
