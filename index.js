@@ -6,6 +6,7 @@ const modal = $.modal({
     
     `,
     width: '300px',
+    //параметру кнопок
     footerButtons: [
         {
             text: 'Ok',
@@ -21,7 +22,7 @@ const modal = $.modal({
                 console.log('Danger btn clicked')
             }
         },
-
+        
 
     ]
 
