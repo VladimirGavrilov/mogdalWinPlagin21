@@ -73,9 +73,10 @@ const modal = $.modal({
 }
 );
 document.addEventListener('click', event => {
+    event.preventDefault(false)
     const btnType = event.target.dataset.btn
     // console.log( 'Clict', event.target.dataset.close )
-    if (btnType == 'price') {
+    if (btnType === 'price') {
         modal.open()
 
     }
