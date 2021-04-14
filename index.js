@@ -3,7 +3,7 @@ const deserts = [
     {   id: 1,
         prise: 20,
         title: 'Пироженое', 
-        image: 'https://s2.best-wallpaper.net/wallpaper/1024x768/1308/Dessert-cake-strawberries-sweet-food_1024x768.jpg',        
+        image: 'https://aipa.ru/127040-thickbox_default/sladkiy-keksik-almaznaya-vyshivka-mozaika-granni.jpg',
         text:'Dessert Kuchen, Erdbeeren, süße Speisen'
     },
     {
@@ -17,7 +17,7 @@ const deserts = [
         id: 3,
         prise: 120,
         title: 'Пироженое',
-        image: 'https://s2.best-wallpaper.net/wallpaper/1024x768/1308/Dessert-cake-strawberries-sweet-food_1024x768.jpg',
+        image: 'https://centro-pol.ru/wp-content/uploads/2018/12/3-13.jpg',
         text: 'Dessert Kuchen, Erdbeeren, süße Speisen'
     }
 ]
@@ -57,28 +57,7 @@ const modalPrece = $.modal({
         },]
     }
 );
-const confirmModal = $.modal({
-    title: 'Вы уверенны?',
-    closable: true,
-    width: '300px',
-    //параметру кнопок
-    footerButtons: [
-        {
-            text: 'Отменить',
-            type: 'secondary',
-            handler() {
-                confirmModal.close()
-            }
-        },
-        {
-            text: 'удалить',
-            type: 'danger',
-            handler() {
-                 alert("dfq")
-            }
-        },]
-}
-);
+ 
 /////////////
 const modal = $.modal({
     title: 'Титул окна!',
@@ -124,8 +103,18 @@ document.addEventListener('click', event => {
 
     } else if (btnType === 'remove') {
         const prase1 = deserts.find(item => item.id == id)
-        confirmModal.setContent(`Вы точно хотите удалить ${prase1.title} `)
-        confirmModal.open()
+        $.confirm(
+            {
+                title: 'Вы уверенны!',
+                content: `Вы  удаляете  <h3>${prase1.title}</h3>`,
+            }).then(() => {
+                console.log('remove')
+            }).catch(() => {
+                console.log('Cancel')
+            })
+        // const prase1 = deserts.find(item => item.id == id)
+        // confirmModal.setContent(`Вы точно хотите удалить ${prase1.title} `)
+        //  document.querySelector().destroy()
         
 
     }
