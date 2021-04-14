@@ -1,5 +1,5 @@
 //показать цену в модалке
-const deserts = [
+let deserts = [
     {   id: 1,
         prise: 20,
         title: 'Пироженое', 
@@ -108,9 +108,11 @@ document.addEventListener('click', event => {
                 title: 'Вы уверенны!',
                 content: `Вы  удаляете  <h3>${prase1.title}</h3>`,
             }).then(() => {
-                console.log('remove')
+                deserts = deserts.filter(f => f.id != id)
+                render()
             }).catch(() => {
                 console.log('Cancel')
+
             })
         // const prase1 = deserts.find(item => item.id == id)
         // confirmModal.setContent(`Вы точно хотите удалить ${prase1.title} `)

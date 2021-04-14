@@ -5,6 +5,9 @@ $.confirm = function (options) {
           width: "400px",
           closable: false,
           content: options.content,
+          onClose(){
+              modal.destroy()
+          },
           footerButtons: [
             {
                 text: 'Отмена',
@@ -23,7 +26,7 @@ $.confirm = function (options) {
             }}
           ]
       })
-      modal.open()   
+      setTimeout(() => modal.open(), 200)   
     })
     
 }
