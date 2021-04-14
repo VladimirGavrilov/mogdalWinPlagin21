@@ -30,7 +30,7 @@ const toHTML = (desert) =>
                 <h5 class="card-title">${ desert.title }</h5>
                 <p class="card-text">${ desert.text}</p>
                 <a href="#" class="btn btn-primary" data-btn = "price" data-id='${ desert.id}'>Посмотреть цену</a>
-                <a href="#" class="btn btn-danger">Удалить</a>
+                <a href="#" class="btn btn-danger" data-btn = "remove" data-id='${ desert.id}'>Удалить</a>
             </div>
         </div>
     </div>`
@@ -54,10 +54,29 @@ const modalPrece = $.modal({
             handler() {
                 modalPrece.close()
             }
+        },]
+    }
+);
+const confirmModal = $.modal({
+    title: 'Вы уверенны?',
+    closable: true,
+    width: '300px',
+    //параметру кнопок
+    footerButtons: [
+        {
+            text: 'Отменить',
+            type: 'secondary',
+            handler() {
+                confirmModal.close()
+            }
         },
-    ]
-
-
+        {
+            text: 'удалить',
+            type: 'danger',
+            handler() {
+                 alert("dfq")
+            }
+        },]
 }
 );
 /////////////
@@ -95,11 +114,19 @@ const modal = $.modal({
 document.addEventListener('click', event => {
     event.preventDefault(false)
     const btnType = event.target.dataset.btn
-    const id = event.target.dataset.id
-    const desert = deserts.
-    // console.log( 'Clict', event.target.dataset.close )
+    const id = +event.target.dataset.id
+    
+    // console.log( 'id', event.target.dataset.id )
     if (btnType === 'price') {
-        modalPrece.open()
+        const prase1 = deserts.find(item => item.id == id)
+        modalPrece.open()    
+        modalPrece.setContent(`Цена на ${prase1.title} = <h3>${prase1.prise}</h3> тугриков`)
+
+    } else if (btnType === 'remove') {
+        const prase1 = deserts.find(item => item.id == id)
+        confirmModal.setContent(`Вы точно хотите удалить ${prase1.title} `)
+        confirmModal.open()
+        
 
     }
 })
